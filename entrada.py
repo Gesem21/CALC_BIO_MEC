@@ -1,64 +1,32 @@
 import tkinter as tk
-from tkinter import portada
+from tkinter import PhotoImage
 
-def abrir_aclaraciones():
-    ventana_inicio.destroy()  # Cierra la ventana inicial
+def show_next_image():
+    # Oculta la ventana de portada
+    portada_window.withdraw()
 
-    # Crear ventana de aclaraciones
-    ventana_aclaraciones = tk.Tk()
-    ventana_aclaraciones.title("Aclaraciones")
-    ventana_aclaraciones.geometry("600x400")
+    # Crea una nueva ventana para la imagen de aclaraciones
+    aclaraciones_window = tk.Toplevel()
+    aclaraciones_window.title("Aclaraciones")
 
-    # Fondo con imagen
-    fondo_aclaraciones = portada(file="fondo_aclaraciones.png")  # Cambia el nombre si usas otra imagen
-    fondo_label = tk.Label(ventana_aclaraciones, image=fondo_aclaraciones)
-    fondo_label.place(relwidth=1, relheight=1)
+    aclaraciones_img = PhotoImage(file="aclaracionesmed.png")
+    aclaraciones_label = tk.Label(aclaraciones_window, image=aclaraciones_img)
+    aclaraciones_label.image = aclaraciones_img  # Necesario para mantener la referencia
+    aclaraciones_label.pack()
 
-    # Texto de aclaraciones
-    texto_aclaraciones = tk.Label(
-        ventana_aclaraciones,
-        text="Aquí van las aclaraciones importantes para los usuarios.",
-        bg="white",
-        fg="black",
-        font=("Arial", 12),
-        wraplength=500,
-    )
-    texto_aclaraciones.place(relx=0.5, rely=0.4, anchor="center")
+    continue_button = tk.Button(aclaraciones_window, text="CONTINUAR", command=aclaraciones_window.destroy)
+    continue_button.pack()
 
-    # Botón de continuar
-    boton_continuar = tk.Button(
-        ventana_aclaraciones,
-        text="Continuar",
-        command=ventana_aclaraciones.destroy,  # Cierra la ventana
-        font=("Arial", 14),
-        bg="#4CAF50",
-        fg="white",
-    )
-    boton_continuar.place(relx=0.5, rely=0.7, anchor="center")
+# Ventana principal para la portada
+portada_window = tk.Tk()
+portada_window.title("Portada")
 
-    ventana_aclaraciones.mainloop()
+portada_img = PhotoImage(file="portadainicio.png")
+portada_label = tk.Label(portada_window, image=portada_img)
+portada_label.pack()
 
+start_button = tk.Button(portada_window, text="INICIAR", command=show_next_image)
+start_button.pack()
 
-# Crear ventana inicial
-ventana_inicio = tk.Tk()
-ventana_inicio.title("Inicio")
-ventana_inicio.geometry("600x400")
-
-# Fondo con imagen
-fondo_inicio = portada(file="fondo_inicio.png")  # Cambia el nombre si usas otra imagen
-fondo_label = tk.Label(ventana_inicio, image=fondo_inicio)
-fondo_label.place(relwidth=1, relheight=1)
-
-# Botón de iniciar
-boton_iniciar = tk.Button(
-    ventana_inicio,
-    text="Iniciar",
-    command=abrir_aclaraciones,  # Llama a la función que abre la segunda ventana
-    font=("Arial", 14),
-    bg="#4CAF50",
-    fg="white",
-)
-boton_iniciar.place(relx=0.5, rely=0.7, anchor="center")
-
-ventana_inicio.mainloop()
+portada_window.mainloop()
 
