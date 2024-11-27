@@ -1,5 +1,4 @@
 import tkinter as tk
-
 class Application:
     def __init__(self,ventana):
         self.ventana=ventana
@@ -55,12 +54,32 @@ class Application:
         
         #ENTRADAS
         #Nombre
-        nombre_in = tk.Entry(ventana, text="Nombre")
-        nombre_in.place(relx=0.25,y=350,width=180, height=40,anchor='c')
-        peso_in = tk.Entry(ventana)
-        peso_in.place(relx=0.25,y=500,width=180, height=40,anchor='c')
-        edad_in = tk.Entry(ventana)
-        edad_in.place(relx=0.25,y=650,width=180, height=40,anchor='c')
+        self.nombre_label=tk.Label(ventana, text="Nombre")
+        self.nombre_label.config(font=("Courier New", 20), fg="gray75")
+        self.nombre_label.place(relx=0.195, y=290)
+        
+        self.nombre_in = tk.Entry(ventana)
+        self.nombre_in.config(font=("Arial", 15))
+        self.nombre_in.place(relx=0.25,y=350,width=180, height=40,anchor='c')
+        
+        #Peso
+        self.peso_label=tk.Label(ventana, text="Peso")
+        self.peso_label.config(font=("Courier New", 20), fg="gray75")
+        self.peso_label.place(relx=0.195, y=440)
+        
+        self.peso_in = tk.Entry(ventana)
+        self.peso_in.config(font=("Arial", 15))
+        self.peso_in.place(relx=0.25,y=500,width=180, height=40,anchor='c')
+        
+        #edad
+        self.edad_label=tk.Label(ventana, text="Edad")
+        self.edad_label.config(font=("Courier New", 20), fg="gray75")
+        self.edad_label.place(relx=0.195, y=590)
+        
+        self.edad_in = tk.Entry(ventana)
+        self.edad_in.config(font=("Arial", 15))
+        self.edad_in.place(relx=0.25,y=650,width=180, height=40,anchor='c')
+        
         
         #BOTONES
         #go
@@ -73,10 +92,16 @@ class Application:
         self.boton4.place(relx=0.85, rely=0.85, width=150, height=80)
         
     def medicamentos(self):
+        #OBTENER DATOS
+        peso_dato= self.peso_in.get()
+        edad_dato= self.edad_in.get()
+        nombre_dato = self.nombre_in.get()
+        
         #fondo
         label3 = tk.Label(self.ventana, image=self.img3)
         label3.image = self.img
         label3.place(x=0, y=0, relwidth=1, relheight=1)
+        print(peso_dato)
         
         #go
         self.boton3 = tk.Button(ventana, text="GO!", command=self.medicamentos)
