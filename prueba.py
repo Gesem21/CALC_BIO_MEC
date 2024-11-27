@@ -1,21 +1,20 @@
-from tkinter import *
-from tkinter import ttk
+import tkinter as tk
 
 class Alumno:
     def __init__(self,ventana):
         self.ventana=ventana
-        self.ventana.title("")
-
-        marco=LabelFrame(self.ventana,text="Alumno")
-        marco.grid(row=0,column=0,columnspan=3,pady=20)
-        #Nombre
-        Label(marco,text="Nombre").grid(row=0,column=0)
-        Entry(marco).grid(row=0,column=1)
-        #Clave
-        Label(marco,text="Clave").grid(row=1,column=0)
-        Entry(marco).grid(row=1,column=1)
-        #Boton
-        ttk.Button(marco,text="Guardar alumno").grid(row=2,columnspan=2,sticky=W+E)
+        self.ventana.title("Calculadora")
+        ventana.geometry("1920x1080")
+        ventana.minsize(400,200)
+        ventana.maxsize(800,500)
+        #Logo del programa
+        #ventana.iconbitmap("")
+        
+        #Titulo
+        etiqueta = tk.Label(ventana, text="Salud")
+        etiqueta.config(font=("Arial", 14, "bold"))
+        etiqueta.pack()
+        
 if __name__=="__main__":
-    ventana=Tk()
+    ventana=tk.Tk()
     aplicacion=Alumno(ventana)
