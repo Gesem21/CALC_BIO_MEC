@@ -12,4 +12,4 @@ Loratadina: Antialérgico.
 Salbutamol: Para asma y problemas respiratorios (vía inhalatoria o jarabe).
 Aclaraciones: La calculadora tiene como pacientes a niños que no tengan ninguna enfermedad de base ni sigan algún tratamiento que se pueda ver afectado por el consumo de estos medicamentos. 
 Los pacientes SIEMPRE tienen que ser mayores de dos años (Se añadirá en validaciones de datos de entrada)
-Todos los medicamentos mencionados son unicamente comprimidos. 
+Todos los medicamentos mencionados son unicamente comprimidos. (tabletas)
