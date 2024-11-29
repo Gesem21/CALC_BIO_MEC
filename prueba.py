@@ -181,3 +181,43 @@ if _name=="main_":
     ventana.mainloop
 
 
+def validar_peso():
+    try:
+        # Obtener valores de los campos de entrada
+        edad = int(entrada_edad.get())
+        peso = float(entrada_peso.get())
+        
+        # Validar rango de edad
+        if edad < 2 or edad > 14:
+            messagebox.showerror("Error", "La edad debe estar entre 2 y 14 años.")
+            return
+        
+        # Obtener el rango de peso esperado para la edad ingresada
+        peso_min, peso_max = pesos_esperados[edad]
+        
+        # Validar el peso ingresado
+        if peso_min <= peso <= peso_max:
+            messagebox.showinfo("Resultado", f"El peso es adecuado para un niño de {edad} años.")
+        else:
+            messagebox.showwarning("Resultado", 
+                f"El peso está fuera del rango esperado ({peso_min} - {peso_max} kg) para un niño de {edad} años.")
+    except ValueError:
+        messagebox.showerror("Error", "Por favor, ingrese valores numéricos válidos.")
+
+# Crear ventana principal
+ventana = tk.Tk()
+ventana.title("Validador de Peso en Niños")
+ventana.geometry("350x200")
+
+# Etiquetas y campos de entrada
+tk.Label(ventana, text="Edad (años):").grid(row=0, column=0, padx=10, pady=10)
+entrada_edad = tk.Entry(ventana)
+entrada_edad.grid(row=0, column=1)
+
+tk.Label(ventana, text="Peso (kg):").grid(row=1, column=0, padx=10, pady=10)
+entrada_peso = tk.Entry(ventana)
+entrada_peso.grid(row=1, column=1)
+
+# Botón para validar
+boton_validar = tk.Button(ventana, text="Validar Peso", command=validar_peso)
+boton_validar.grid(row=2, column=0, columnspan=2, pady=20)
