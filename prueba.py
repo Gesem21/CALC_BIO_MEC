@@ -1,6 +1,9 @@
 import tkinter as tk
+from tkinter import ttk
+from PIL import Image, ImageTk
+
 class Application:
-    def __init__(self,ventana):
+    def _init_(self,ventana):
         self.ventana=ventana
         self.ventana.title("Calculadora")
         ventana.geometry("1080x720")
@@ -60,10 +63,10 @@ class Application:
         
         self.nombre_in = tk.Entry(ventana)
         self.nombre_in.config(font=("Arial", 15))
-        self.nombre_in.place(relx=0.25,y=350,width=180, height=40,anchor='c')
+        self.nombre_in.place(relx=0.25,y=350,width=200, height=40,anchor='c')
         
         #Peso
-        self.peso_label=tk.Label(ventana, text="Peso")
+        self.peso_label=tk.Label(ventana, text="Peso [Kg]")
         self.peso_label.config(font=("Courier New", 20), fg="gray75")
         self.peso_label.place(relx=0.195, y=440)
         
@@ -103,7 +106,58 @@ class Application:
         label3.place(x=0, y=0, relwidth=1, relheight=1)
         print(peso_dato)
         
-        #go
+        #MEDICAMENTOS
+        #Paracetamol
+        img10_original = Image.open("paracetamol.png")  # Carga la imagen original.
+        img10_resized = img10_original.resize((200, 80), Image.Resampling.LANCZOS)  # Ajusta el tamaño de la imagen al botón.
+        img10 = ImageTk.PhotoImage(img10_resized)
+        
+        self.boton4 = tk.Button(ventana, image=img10)
+        self.boton4.image=img10
+        self.boton4.config(relief="raised", bd=5)
+        self.boton4.place(relx=0.15, rely=0.35, width=200, height=80)
+        
+        #Ibuprofeno
+        img11_original = Image.open("ibuprofeno.png")  # Carga la imagen original.
+        img11_resized = img11_original.resize((200, 80), Image.Resampling.LANCZOS)  # Ajusta el tamaño de la imagen al botón.
+        img11 = ImageTk.PhotoImage(img11_resized)
+        
+        self.boton5 = tk.Button(ventana, image=img11)
+        self.boton5.image=img11
+        self.boton5.config(relief="raised", bd=5)
+        self.boton5.place(relx=0.15, rely=0.6, width=200, height=90)
+        
+        #Antialergicos
+        img12_original = Image.open("antialergico.png")  # Carga la imagen original.
+        img12_resized = img12_original.resize((200, 80), Image.Resampling.LANCZOS)  # Ajusta el tamaño de la imagen al botón.
+        img12 = ImageTk.PhotoImage(img12_resized)
+        
+        self.boton6 = tk.Button(ventana, image=img12)
+        self.boton6.image=img12
+        self.boton6.config(relief="raised", bd=5)
+        self.boton6.place(relx=0.65, rely=0.35, width=200, height=80)
+        
+        #Setericina
+        img13_original = Image.open("cetirizina.png")  # Carga la imagen original.
+        img13_resized = img13_original.resize((200, 80), Image.Resampling.LANCZOS)  # Ajusta el tamaño de la imagen al botón.
+        img13 = ImageTk.PhotoImage(img13_resized)
+        
+        self.boton7 = tk.Button(ventana, image=img13)
+        self.boton7.config(relief="raised",bd=5)
+        self.boton7.image=img13
+        self.boton7.place(relx=0.65, rely=0.6, width=200, height=80)
+        
+        #Sefixima
+        img14_original = Image.open("cefixima.png")  # Carga la imagen original.
+        img14_resized = img14_original.resize((200, 80), Image.Resampling.LANCZOS)  # Ajusta el tamaño de la imagen al botón.
+        img14 = ImageTk.PhotoImage(img14_resized)
+        
+        self.boton8 = tk.Button(ventana, image=img14)
+        self.boton8.config(relief="raised", bd=5)
+        self.boton8.image=img14
+        self.boton8.place(relx=0.4, rely=0.48, width=200, height=80)
+        
+        #Go
         self.boton3 = tk.Button(ventana, text="GO!", command=self.medicamentos)
         self.boton3.config(bg="gray75", fg="Black", font=("Arial", 20))
         self.boton3.place(relx=0.47, rely=0.85, width=80, height=80)
@@ -121,8 +175,9 @@ class Application:
         
         
         
-if __name__=="__main__":
+if _name=="main_":
     ventana=tk.Tk()
     app=Application(ventana)
     ventana.mainloop
+
 
