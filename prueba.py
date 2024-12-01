@@ -173,6 +173,18 @@ class Application:
         Application(ventana_principal)
         ventana_principal.mainloop()
         
+    """def ceritizina(self):
+        pesodato= self.peso_dato.get()
+        if pesodato > 30:
+            dosis="10 mg / dia"
+            #print("10 mg/dia")
+        elif pesodato < 30: 
+            #print("15 mg/dia")
+            dosis = "15 mg / dia"
+        dosislabel = tk.Label(ventana, text=dosis)
+        self.dosislabel.config(relx = 0.5, rely = 0.5)"""
+
+        
         
         
 if _name=="main_":
