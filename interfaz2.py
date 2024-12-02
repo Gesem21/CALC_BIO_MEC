@@ -144,6 +144,20 @@ class Application:
         self.boton4.config(bd=0, bg="#92c8fe")
         self.boton4.place(x=270, y=350, width=250, height=100)
         
+        # Imagen informativa
+        self.img_info = Image.open("paracetamol_info.png")  # Aquí debes colocar la imagen que deseas mostrar
+        self.img_info_resized = self.img_info.resize((300, 150), Image.Resampling.LANCZOS)  # Ajusta el tamaño según necesites
+        self.img_info_tk = ImageTk.PhotoImage(self.img_info_resized)
+
+        self.info_label = tk.Label(self.ventana, image=self.img_info_tk)
+        self.info_label.image = self.img_info_tk  # Mantén una referencia de la imagen
+        self.info_label.place(x=270, y=460)  # Coloca la imagen debajo del botón Paracetamol
+        self.info_label.place_forget()  # Inicialmente oculta la imagen
+
+        # Eventos para mostrar y ocultar la imagen informativa
+        self.boton4.bind("<Enter>", self.mostrar_imagen_paracetamol)
+        self.boton4.bind("<Leave>", self.ocultar_imagen_paracetamol)
+        
         #Ibuprofeno
         img11_original = Image.open("ibuprofeno.png")  # Carga la imagen original.
         img11_resized = img11_original.resize((250, 100), Image.Resampling.LANCZOS)  # Ajusta el tamaño de la imagen al botón.
@@ -184,8 +198,20 @@ class Application:
         self.boton4.config(bg="lavender", fg="white", font=("Arial", 20))
         self.boton4.place(relx=0.85, rely=0.85, width=150, height=80)
     
+    def paracetamol(self):
+        peso_dato = int(self.peso_in.get())
+        dosis = 12.5 * peso_dato
+        print(dosis)
+        
+    def ibuprofeno(self):
+        peso_dato = int(self.peso_in.get())
+        dosis = 7.5 * peso_dato
+        
+    def mostrar_imagen_paracetamol(self, event):
+        self.info_label.place(x=270, y=460)  # Muestra la imagen cuando el cursor pasa por encima
 
-    
+    def ocultar_imagen_paracetamol(self, event):
+        self.info_label.place_forget()
         
         
         
@@ -193,4 +219,5 @@ if __name__=="__main__":
     ventana=tk.Tk()
     app=Application(ventana)
     ventana.mainloop
+
 
