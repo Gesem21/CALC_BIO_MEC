@@ -1,4 +1,3 @@
-#hola
 import tkinter as tk
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
@@ -6,15 +5,12 @@ import time
 import csv
 
 class Application:
-        def init(self,ventana):
+    def _init_(self,ventana):
         ventana.attributes("-fullscreen", True)
         self.ventana=ventana
         self.ventana.title("Calculadora")
         ventana.geometry("1920x1080")
-        #Logo del programa
-        #ventana.iconbitmap("")
-        #Fondo
-        #LLAMADO DE IMAGENES
+        
         #Pantalla 1
         img0_original = Image.open("home.png")  # Carga la imagen original.
         img0_resized = img0_original.resize((1534, 862), Image.Resampling.LANCZOS)  # Ajusta el tamaño de la imagen al botón.
@@ -76,6 +72,7 @@ class Application:
         self.label69 = tk.Label(self.ventana, image=img69)
         self.label69.image=img69
         self.label69.place(x=0, y=0)
+        
         #Cerrar
         self.boton2 = tk.Button(ventana, text="Exit", command=self.destruir)
         self.boton2.config(bg="red", fg="white", font=("Arial", 15),relief="raised", bd=10)
@@ -289,7 +286,7 @@ class Application:
         self.cruz_label3.bind("<Leave>", self.ocultar_imagen_cetirizina)
         
         #Imagen de informacion
-        self.img_infoc = Image.open("info_ibuprofeno.png")  # Aquí debes colocar la imagen que deseas mostrar
+        self.img_infoc = Image.open("info_cetirizina.png")  # Aquí debes colocar la imagen que deseas mostrar
         self.img_infoc_resized = self.img_infoc.resize((500, 250), Image.Resampling.LANCZOS)  # Ajusta el tamaño según necesites
         self.img_infoc_tk = ImageTk.PhotoImage(self.img_infoc_resized)
 
@@ -316,7 +313,7 @@ class Application:
         self.cruz_label4.bind("<Leave>", self.ocultar_imagen_loratadina)
         
         #Imagen de informacion
-        self.img_infol = Image.open("info_ibuprofeno.png")  # Aquí debes colocar la imagen que deseas mostrar
+        self.img_infol = Image.open("info_loratadina.png")  # Aquí debes colocar la imagen que deseas mostrar
         self.img_infol_resized = self.img_infol.resize((500, 250), Image.Resampling.LANCZOS)  # Ajusta el tamaño según necesites
         self.img_infol_tk = ImageTk.PhotoImage(self.img_infol_resized)
 
@@ -342,9 +339,9 @@ class Application:
         self.label_dosis1.place(relx=0.33, rely=0.5)
         
         #Cerrar
-        self.boton2 = tk.Button(ventana, text="Exit", command=self.destruir)
-        self.boton2.config(bg="red", fg="white", font=("Arial", 15),relief="raised", bd=10)
-        self.boton2.place(relx=0, rely=0, width=80, height=60)
+        self.botont1 = tk.Button(ventana, text="Terminar", command=self.terminar)
+        self.botont1.config(bg="#51b6b6", fg="white", font=("Arial", 15),relief="raised", bd=10)
+        self.botont1.place(relx=0.43, rely=0.8, width=200, height=70)
         
     def ibuprofeno(self):
         #Cargar fondo
@@ -364,9 +361,9 @@ class Application:
         self.label_dosis1.place(relx=0.33, rely=0.5)
         
         #Cerrar
-        self.boton2 = tk.Button(ventana, text="Exit", command=self.destruir)
-        self.boton2.config(bg="red", fg="white", font=("Arial", 15),relief="raised", bd=10)
-        self.boton2.place(relx=0, rely=0, width=80, height=60)
+        self.botont2 = tk.Button(ventana, text="Terminar", command=self.terminar)
+        self.botont2.config(bg="#51b6b6", fg="white", font=("Arial", 15),relief="raised", bd=10)
+        self.botont2.place(relx=0.43, rely=0.8, width=200, height=70)
     
     def ceritizina(self):
         #Cargar fondo
@@ -386,9 +383,9 @@ class Application:
         self.label_dosis1.place(relx=0.33, rely=0.5)
         
         #Cerrar
-        self.boton2 = tk.Button(ventana, text="Exit", command=self.destruir)
-        self.boton2.config(bg="red", fg="white", font=("Arial", 15),relief="raised", bd=10)
-        self.boton2.place(relx=0, rely=0, width=80, height=60)
+        self.botont3 = tk.Button(ventana, text="Terminar", command=self.terminar)
+        self.botont3.config(bg="#51b6b6", fg="white", font=("Arial", 15),relief="raised", bd=10)
+        self.botont3.place(relx=0.43, rely=0.8, width=200, height=70)
     
     def loratadina(self):
         #Cargar fondo
@@ -408,9 +405,9 @@ class Application:
         self.label_dosis1.place(relx=0.33, rely=0.5)
         
         #Cerrar
-        self.boton2 = tk.Button(ventana, text="Terminar", command=self.reinicio)
-        self.boton2.config(bg="#51b6b6", fg="white", font=("Arial", 15),relief="raised", bd=10)
-        self.boton2.place(relx=0.43, rely=0.8, width=200, height=70)
+        self.botont4 = tk.Button(ventana, text="Terminar", command=self.terminar)
+        self.botont4.config(bg="#51b6b6", fg="white", font=("Arial", 15),relief="raised", bd=10)
+        self.botont4.place(relx=0.43, rely=0.8, width=200, height=70)
     
     def mostrar_imagen_paracetamol(self, event):
         self.infop_label.place(x=390, y=290)  # Muestra la imagen cuando el cursor pasa por encima
@@ -431,12 +428,12 @@ class Application:
         self.infol_label.place(x=840, y=290)  # Muestra la imagen cuando el cursor pasa por encima
     def ocultar_imagen_loratadina(self, event):
         self.infol_label.place_forget()
+    
+    def terminar(self):
+        pass
         
         
-if name=="main":
+if _name=="main_":
     ventana=tk.Tk()
     app=Application(ventana)
     ventana.mainloop
-
-
-
