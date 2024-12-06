@@ -301,5 +301,141 @@ class Application:
         self.botonl.config(bg="#51b6b6", fg="Black", font=("Arial", 20), relief="groove", bd=6)
         self.botonl.place(x=1172, y=655, width=185, height=50)
         
+        #Imagen cruz
+        self.img_cruz4 = Image.open("mas_info.png")  # Aquí debes colocar la imagen que deseas mostrar
+        self.img_cruz4_resized = self.img_cruz4.resize((40, 40), Image.Resampling.LANCZOS)  # Ajusta el tamaño según necesites
+        self.img_cruz4_tk = ImageTk.PhotoImage(self.img_cruz4_resized)
+
+        self.cruz_label4 = tk.Label(self.ventana, image=self.img_cruz4_tk)
+        self.cruz_label4.image = self.img_cruz4_tk
+        self.cruz_label4.place(x=1340, y=250)
+
+        # Eventos para mostrar y ocultar la imagen informativa
+        self.cruz_label4.bind("<Enter>", self.mostrar_imagen_loratadina)
+        self.cruz_label4.bind("<Leave>", self.ocultar_imagen_loratadina)
+        
+        #Imagen de informacion
+        self.img_infol = Image.open("info_ibuprofeno.png")  # Aquí debes colocar la imagen que deseas mostrar
+        self.img_infol_resized = self.img_infol.resize((500, 250), Image.Resampling.LANCZOS)  # Ajusta el tamaño según necesites
+        self.img_infol_tk = ImageTk.PhotoImage(self.img_infol_resized)
+
+        self.infol_label = tk.Label(self.ventana, image=self.img_infol_tk)
+        self.infol_label.image = self.img_infol_tk
+        self.infol_label.place_forget()
+        
+    def paracetamol(self):
+        #Cargar fondo
+        fondo11_original = Image.open("dosisfondo.png")  # Carga la imagen original.
+        fondo11_resized = fondo11_original.resize((1534, 862), Image.Resampling.LANCZOS)  # Ajusta el tamaño de la imagen al botón.
+        fondo11 = ImageTk.PhotoImage(fondo11_resized)
+        self.labe11 = tk.Label(self.ventana, image=fondo11)
+        self.labe11.image=fondo11
+        self.labe11.place(x=0, y=0)
+        
+        #Calculo de dosis
+        peso_dato = int(self.peso_in.get())
+        dosis = 12.5 * peso_dato
+        
+        #Label de dosis
+        self.label_dosis1 = tk.Label(self.ventana, text=f"Tu dosis es {dosis} mg", font=("Comic Sans MS", 40), bg="white", fg="black")
+        self.label_dosis1.place(relx=0.33, rely=0.5)
+        
+        #Cerrar
+        self.boton2 = tk.Button(ventana, text="Exit", command=self.destruir)
+        self.boton2.config(bg="red", fg="white", font=("Arial", 15),relief="raised", bd=10)
+        self.boton2.place(relx=0, rely=0, width=80, height=60)
+        
+    def ibuprofeno(self):
+        #Cargar fondo
+        fondo11_original = Image.open("dosisfondo.png")  # Carga la imagen original.
+        fondo11_resized = fondo11_original.resize((1534, 862), Image.Resampling.LANCZOS)  # Ajusta el tamaño de la imagen al botón.
+        fondo11 = ImageTk.PhotoImage(fondo11_resized)
+        self.labe11 = tk.Label(self.ventana, image=fondo11)
+        self.labe11.image=fondo11
+        self.labe11.place(x=0, y=0)
+        
+        #Calculo de dosis
+        peso_dato = int(self.peso_in.get())
+        dosis = 7.5 * peso_dato
+        
+        #Label de dosis
+        self.label_dosis1 = tk.Label(self.ventana, text=f"Tu dosis es {dosis} mg", font=("Comic Sans MS", 40), bg="white", fg="black")
+        self.label_dosis1.place(relx=0.33, rely=0.5)
+        
+        #Cerrar
+        self.boton2 = tk.Button(ventana, text="Exit", command=self.destruir)
+        self.boton2.config(bg="red", fg="white", font=("Arial", 15),relief="raised", bd=10)
+        self.boton2.place(relx=0, rely=0, width=80, height=60)
+    
+    def ceritizina(self):
+        #Cargar fondo
+        fondo11_original = Image.open("dosisfondo.png")  # Carga la imagen original.
+        fondo11_resized = fondo11_original.resize((1534, 862), Image.Resampling.LANCZOS)  # Ajusta el tamaño de la imagen al botón.
+        fondo11 = ImageTk.PhotoImage(fondo11_resized)
+        self.labe11 = tk.Label(self.ventana, image=fondo11)
+        self.labe11.image=fondo11
+        self.labe11.place(x=0, y=0)
+        
+        #Calculo de dosis
+        peso_dato = int(self.peso_in.get())
+        dosis = peso_dato * 0.25
+        
+        #Label de dosis
+        self.label_dosis1 = tk.Label(self.ventana, text=f"Tu dosis es {dosis} ml", font=("Comic Sans MS", 40), bg="white", fg="black")
+        self.label_dosis1.place(relx=0.33, rely=0.5)
+        
+        #Cerrar
+        self.boton2 = tk.Button(ventana, text="Exit", command=self.destruir)
+        self.boton2.config(bg="red", fg="white", font=("Arial", 15),relief="raised", bd=10)
+        self.boton2.place(relx=0, rely=0, width=80, height=60)
+    
+    def loratadina(self):
+        #Cargar fondo
+        fondo11_original = Image.open("dosisfondo.png")  # Carga la imagen original.
+        fondo11_resized = fondo11_original.resize((1534, 862), Image.Resampling.LANCZOS)  # Ajusta el tamaño de la imagen al botón.
+        fondo11 = ImageTk.PhotoImage(fondo11_resized)
+        self.labe11 = tk.Label(self.ventana, image=fondo11)
+        self.labe11.image=fondo11
+        self.labe11.place(x=0, y=0)
+        
+        #Calculo de dosis
+        peso_dato = int(self.peso_in.get())
+        dosis = 0.2 * peso_dato
+        
+        #Label de dosis
+        self.label_dosis1 = tk.Label(self.ventana, text=f"Tu dosis es {dosis} ml", font=("Comic Sans MS", 40), bg="white", fg="black")
+        self.label_dosis1.place(relx=0.33, rely=0.5)
+        
+        #Cerrar
+        self.boton2 = tk.Button(ventana, text="Terminar", command=self.reinicio)
+        self.boton2.config(bg="#51b6b6", fg="white", font=("Arial", 15),relief="raised", bd=10)
+        self.boton2.place(relx=0.43, rely=0.8, width=200, height=70)
+    
+    def mostrar_imagen_paracetamol(self, event):
+        self.infop_label.place(x=390, y=290)  # Muestra la imagen cuando el cursor pasa por encima
+    def ocultar_imagen_paracetamol(self, event):
+        self.infop_label.place_forget()
+        
+    def mostrar_imagen_ibuprofeno(self, event):
+        self.infoi_label.place(x=720, y=290)  # Muestra la imagen cuando el cursor pasa por encima
+    def ocultar_imagen_ibuprofeno(self, event):
+        self.infoi_label.place_forget()
+        
+    def mostrar_imagen_cetirizina(self, event):
+        self.infoc_label.place(x=500, y=290)  # Muestra la imagen cuando el cursor pasa por encima
+    def ocultar_imagen_cetirizina(self, event):
+        self.infoc_label.place_forget()
+        
+    def mostrar_imagen_loratadina(self, event):
+        self.infol_label.place(x=840, y=290)  # Muestra la imagen cuando el cursor pasa por encima
+    def ocultar_imagen_loratadina(self, event):
+        self.infol_label.place_forget()
+        
+        
+if name=="main":
+    ventana=tk.Tk()
+    app=Application(ventana)
+    ventana.mainloop
+
 
 
